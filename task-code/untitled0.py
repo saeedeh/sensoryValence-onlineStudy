@@ -10,3 +10,6 @@ import os
 img_dir="/home/saeedeh/Desktop/Projects/github/sensoryValence-onlineStudy/stimuli"
 neg_images = glob.glob(os.path.join(img_dir,'neg-img', '*.jpg'))
 pos_images = glob.glob(os.path.join(img_dir,'pos-img', '*.jpg'))
+pos_dummy= glob.glob(os.path.join(img_dir,'pos-dummy', '*'))
+neg_dummy= glob.glob(os.path.join(img_dir,'neg-dummy', '*'))
+all_images=neg_images+pos_images;
