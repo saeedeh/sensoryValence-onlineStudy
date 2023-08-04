@@ -18,7 +18,7 @@ Limited-viewing demo: https://bit.ly/3Mjaxmx
 
 
 
-## Resutls
+## Results
 **beahvioral-results.pkl**: pandas dataframe saved in pickle format. Contains all data of the behavioral task including responses, response times, condition etc. Each row correponds with one trial.
 
 
