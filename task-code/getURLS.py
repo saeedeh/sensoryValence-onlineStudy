@@ -11,6 +11,7 @@ import pandas as pd
 from os import walk
 
 img_dir="/home/saeedeh/Desktop/Projects/github/sensoryValence-onlineStudy/stimuli"
+img_dir="/Users/saeedeh/Desktop/Desktop old/Projects/github/sensoryValence-onlineStudy/stimuli"
 
 mypath=os.path.join(img_dir,'neg-img')
 neg_img = next(walk(mypath), (None, None, []))[2]
@@ -42,11 +43,12 @@ dict2={'url': neg_urls, 'fname':neg_img, 'val_type': 'neg'}
 dict3={'url': negDummy_urls, 'fname':neg_dummy, 'val_type': 'neg_dummy'}
 dict4={'url': posDummy_urls, 'fname':pos_dummy, 'val_type': 'pos_dummy'}
 df=pd.DataFrame(dict1).append(pd.DataFrame(dict2)).append(pd.DataFrame(dict3)).append(pd.DataFrame(dict4))
-df.to_csv('urls.csv')
+df=pd.concat([pd.DataFrame(dict1), pd.DataFrame(dict2)])
+df.to_csv(img_dir+'/urls.csv')
 
 
 ## Split into N
-N=5
+N=4
 import random
 random.seed(10)
 def split(a, n):
@@ -88,7 +90,8 @@ for i in range(N):
     dict2={'url': neg_chunks[i], 'fname':negImg_chunks[i], 'val_type': 'neg'}
     dict3={'url': posDummy_chunks[i], 'fname':posDummyImg_chunks[i], 'val_type': 'pos_dummy'}
     dict4={'url': negDummy_chunks[i], 'fname':negDummyImg_chunks[i], 'val_type': 'neg_dummy'}
-    df=pd.DataFrame(dict1).append(pd.DataFrame(dict2)).append(pd.DataFrame(dict3)).append(pd.DataFrame(dict4))
+    df=pd.concat([pd.DataFrame(dict1), pd.DataFrame(dict2), pd.DataFrame(dict3), pd.DataFrame(dict4)]);
+    df=pd.concat([pd.DataFrame(dict1), pd.DataFrame(dict2)]);
     df.to_csv(outFile)
 
 
